@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Aiden Basil Jajo – Portfolio | Computer Science @ SDSU</title>
+  <meta name="description" content="Official portfolio of Aiden Basil Jajo, Computer Science major at San Diego State University (SDSU). Interests: data analysis, software, and technology solutions. Projects, coursework, and contact info." />
+  <meta name="author" content="Aiden Basil Jajo" />
+  <link rel="canonical" href="https://aidenjajo.github.io/" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Aiden Basil Jajo – Portfolio" />
+  <meta property="og:description" content="Computer Science @ SDSU • Interested in Data Analysis & Technology Solutions" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://aidenjajo.github.io/" />
+  <meta property="og:image" content="https://aidenjajo.github.io/og-image.jpg" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Aiden Basil Jajo – Portfolio" />
+  <meta name="twitter:description" content="Computer Science @ SDSU • Interested in Data Analysis & Technology Solutions" />
+  <meta name="twitter:image" content="https://aidenjajo.github.io/og-image.jpg" />
+
+  <!-- SEO JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Aiden Basil Jajo",
+    "url": "https://aidenjajo.github.io/",
+    "image": "https://aidenjajo.github.io/og-image.jpg",
+    "jobTitle": "Computer Science Student",
+    "worksFor": {"@type": "CollegeOrUniversity", "name": "San Diego State University"},
+    "address": {"@type": "PostalAddress", "addressLocality": "San Diego", "addressRegion": "CA", "addressCountry": "US"},
+    "sameAs": [
+      "https://www.linkedin.com/in/aidenjajo",
+      "https://github.com/aidenjajo"
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg: #ffffff;
+      --fg: #0f172a; /* slate-900 */
+      --muted: #475569; /* slate-600 */
+      --accent: #c32026; /* SDSU red-ish */
+      --card: #f8fafc; /* slate-50 */
+      --border: #e2e8f0; /* slate-200 */
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; scroll-behavior: smooth; }
+    body {
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color: var(--fg); background: var(--bg); line-height: 1.6;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { max-width: 980px; margin: 0 auto; padding: 0 1rem; }
+    header {
+      position: sticky; top: 0; z-index: 50; backdrop-filter: blur(6px);
+      background: rgba(255,255,255,0.8); border-bottom: 1px solid var(--border);
+    }
+    .nav { display: flex; align-items: center; justify-content: space-between; padding: .75rem 0; }
+    .brand { font-weight: 700; letter-spacing: .2px; }
+    nav a { margin-left: 1rem; color: var(--muted); font-weight: 600; }
+    nav a:hover { color: var(--fg); }
+
+    .hero { padding: 64px 0 24px; }
+    .hero h1 { margin: 0 0 .25rem; font-size: clamp(28px, 4vw, 40px); }
+    .subtitle { color: var(--muted); margin: 0 0 1rem; font-size: clamp(16px, 2vw, 18px); }
+    .badges { display: flex; gap: .5rem; flex-wrap: wrap; }
+    .badge { background: var(--card); border: 1px solid var(--border); padding: .35rem .6rem; border-radius: 999px; font-size: 13px; color: var(--muted); }
+    .cta { display: flex; gap: .75rem; margin-top: 1rem; flex-wrap: wrap; }
+    .btn { display: inline-block; padding: .6rem .9rem; border-radius: 10px; border: 1px solid var(--border); background: #fff; font-weight: 600; }
+    .btn.primary { background: var(--accent); color: #fff; border: none; }
+
+    section { padding: 32px 0; }
+    h2 { font-size: 22px; margin: 0 0 16px; }
+    .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; }
+    .card { grid-column: span 12; background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 16px; }
+    @media (min-width: 720px) { .card.half { grid-column: span 6; } }
+    .card h3 { margin-top: 0; margin-bottom: 4px; font-size: 18px; }
+    .meta { color: var(--muted); font-size: 14px; }
+    .list { margin: 8px 0 0 18px; }
+    footer { padding: 24px 0 64px; border-top: 1px solid var(--border); color: var(--muted); font-size: 14px; }
+
+    /* Accessible skip link */
+    .skip { position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; overflow: hidden; }
+    .skip:focus { position: static; width: auto; height: auto; padding: .5rem; background: #fff; border: 1px solid var(--border); }
+  </style>
+</head>
+<body>
+  <a href="#main" class="skip">Skip to content</a>
+  <header>
+    <div class="container nav">
+      <div class="brand">Aiden Jajo</div>
+      <nav aria-label="Primary">
+        <a href="#projects">Projects</a>
+        <a href="#education">Education</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <section class="hero" aria-labelledby="intro-title">
+      <h1 id="intro-title">Aiden Basil Jajo</h1>
+      <p class="subtitle">Computer Science @ SDSU • Interested in Data Analysis & Technology Solutions</p>
+      <div class="badges" role="list" aria-label="Quick facts">
+        <span class="badge">San Diego, CA</span>
+        <a class="badge" href="https://www.linkedin.com/in/aidenjajo" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="badge" href="https://github.com/aidenjajo" target="_blank" rel="noopener">GitHub</a>
+        <a class="badge" href="#resume" onclick="alert('Add your resume.pdf to the repo and link it here.'); return false;">Résumé (PDF)</a>
+      </div>
+      <div class="cta">
+        <a class="btn primary" href="#projects">View Projects</a>
+        <a class="btn" href="#contact">Get in Touch</a>
+      </div>
+    </section>
+
+    <section id="projects" aria-labelledby="projects-title">
+      <h2 id="projects-title">Projects</h2>
+      <div class="grid">
+        <!-- Example Project Card 1 (fill with CS 577 details later) -->
+        <article class="card half" aria-labelledby="p1-title">
+          <h3 id="p1-title">Project Title – CS 577</h3>
+          <p class="meta">Role: Student • Focus: Data cleaning, visualization, insights</p>
+          <ul class="list">
+            <li>Brief 1-line summary of the problem and dataset size.</li>
+            <li>Mention tools actually used (e.g., Python/pandas, Excel, or Google Sheets).</li>
+            <li>State 1–2 results/insights in plain language.</li>
+          </ul>
+          <p class="meta"><a href="#" aria-label="Source code link">GitHub</a> · <a href="#" aria-label="Report or slides link">Report/Slides</a></p>
+        </article>
+
+        <!-- Example Project Card 2 -->
+        <article class="card half" aria-labelledby="p2-title">
+          <h3 id="p2-title">Project Title – CS 577</h3>
+          <p class="meta">Role: Student • Focus: Exploratory analysis, simple stats</p>
+          <ul class="list">
+            <li>What question did you answer and why it mattered.</li>
+            <li>What you did (e.g., cleaned NA values, group-by, charts).</li>
+            <li>What you found (1 concrete takeaway).</li>
+          </ul>
+          <p class="meta"><a href="#">GitHub</a> · <a href="#">Report/Slides</a></p>
+        </article>
+
+        <!-- Add more cards as needed; keep honest and simple. -->
+      </div>
+    </section>
+
+    <section id="education" aria-labelledby="edu-title">
+      <h2 id="edu-title">Education</h2>
+      <div class="card">
+        <h3>San Diego State University – San Diego, CA</h3>
+        <p class="meta">B.S. in Computer Science • Expected May 2026 • GPA: 3.75</p>
+        <p class="meta">Relevant: Data Structures, Algorithms, Database Theory & Implementation, Advanced Programming Languages, Artificial Intelligence, Data Science Techniques, Applied Probability, Computer Architecture, Operating Systems, Computer Security, Networks & Distributed Systems</p>
+        <h3>Grossmont College – El Cajon, CA</h3>
+        <p class="meta">A.S. in Computer Science • Completed 2023 • GPA: 3.76</p>
+      </div>
+    </section>
+
+    <section id="about" aria-labelledby="about-title">
+      <h2 id="about-title">About</h2>
+      <div class="card">
+        <p>Hi, I’m Aiden — a Computer Science student at SDSU interested in data analysis and clear, practical solutions. I’m building a foundation in computing fundamentals and applying them to small, honest projects that focus on cleaning data, simple analysis, and communicating findings. I value straightforward, well-documented work and continuous learning.</p>
+      </div>
+    </section>
+
+    <section id="contact" aria-labelledby="contact-title">
+      <h2 id="contact-title">Contact</h2>
+      <div class="card">
+        <p>Email: <a href="mailto:JajoAiden@icloud.com">JajoAiden@icloud.com</a></p>
+        <p>LinkedIn: <a href="https://www.linkedin.com/in/aidenjajo" target="_blank" rel="noopener">linkedin.com/in/aidenjajo</a></p>
+        <p>GitHub: <a href="https://github.com/aidenjajo" target="_blank" rel="noopener">github.com/aidenjajo</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© <span id="year"></span> Aiden Basil Jajo. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
