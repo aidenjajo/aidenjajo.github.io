@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Insurance Cost Analysis | Aiden B. Jajo</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="project-styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">Aiden B. Jajo</a>
+            <div class="nav-links">
+                <a href="index.html#about" class="nav-link">About</a>
+                <a href="index.html#projects" class="nav-link">Projects</a>
+                <a href="index.html#goals" class="nav-link">Goals</a>
+                <a href="index.html#resume" class="nav-link">Resume</a>
+                <a href="index.html#contact" class="nav-link nav-link-cta">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Project Hero -->
+    <section class="project-hero">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> / <a href="index.html#projects">Projects</a> / <span>Medical Insurance Analysis</span>
+            </div>
+            <h1 class="project-hero-title">What Really Drives Your Insurance Costs?</h1>
+            <p class="project-hero-subtitle">A data-driven exploration of the factors that determine medical insurance premiums</p>
+            <div class="project-meta">
+                <span class="meta-item"><strong>Tools:</strong> Python, Pandas, Tableau</span>
+                <span class="meta-item"><strong>Dataset:</strong> 1,338 insurance records</span>
+                <span class="meta-item"><strong>Focus:</strong> Exploratory Data Analysis</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Challenge -->
+    <section class="project-section">
+        <div class="container">
+            <h2 class="section-title-small">The Challenge</h2>
+            <div class="content-block">
+                <p class="lead-text">
+                    Most people don't understand why their insurance costs what it does. Is it age? 
+                    Weight? Where you live? Without transparency, consumers can't make informed decisions 
+                    about their health and finances.
+                </p>
+                <p>
+                    Insurance pricing often feels like a black box. Multiple factors interact in complex 
+                    ways, and the relative importance of each factor isn't always clear. This project 
+                    aims to uncover the hidden patterns in medical insurance pricing using real-world 
+                    data and clear visualization.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Approach -->
+    <section class="project-section bg-light">
+        <div class="container">
+            <h2 class="section-title-small">Data & Methodology</h2>
+            <div class="methodology-grid">
+                <div class="method-card">
+                    <div class="method-icon">📊</div>
+                    <h3>Data Source</h3>
+                    <p>1,338 insurance records from Kaggle containing demographics, health metrics, and cost data across four US regions.</p>
+                </div>
+                <div class="method-card">
+                    <div class="method-icon">🧹</div>
+                    <h3>Data Cleaning</h3>
+                    <p>Removed duplicates, standardized text formatting, and created categorical features for age groups and BMI categories.</p>
+                </div>
+                <div class="method-card">
+                    <div class="method-icon">⚙️</div>
+                    <h3>Feature Engineering</h3>
+                    <p>Generated age groups, BMI categories, expense tiers, and expense-to-premium ratios for deeper analysis.</p>
+                </div>
+                <div class="method-card">
+                    <div class="method-icon">📈</div>
+                    <h3>Analysis Tools</h3>
+                    <p>Python (pandas, matplotlib, seaborn) for data manipulation and Tableau for interactive visualization.</p>
+                </div>
+            </div>
+
+            <!-- Code Snippet -->
+            <div class="code-showcase">
+                <h3>Data Cleaning Pipeline</h3>
+                <div class="code-block">
+                    <pre><code># Remove duplicates and create new features
+df_cleaned = df.drop_duplicates().copy()
+
+# Age Groups - segment by life stage
+df_cleaned['age_group'] = pd.cut(df_cleaned['age'], 
+                                  bins=[17, 25, 35, 45, 55, 65], 
+                                  labels=['18-25', '26-35', '36-45', '46-55', '56-64'])
+
+# BMI Categories - based on WHO standards
+df_cleaned['bmi_category'] = pd.cut(df_cleaned['bmi'],
+                                     bins=[0, 18.5, 25, 30, 100],
+                                     labels=['Underweight', 'Normal', 'Overweight', 'Obese'])
+
+# Calculate expense to premium ratio for profitability
+df_cleaned['expense_to_premium_ratio'] = (df_cleaned['expenses'] / 
+                                           df_cleaned['premium']).round(2)</code></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Insights -->
+    <section class="project-section">
+        <div class="container">
+            <h2 class="section-title-small">Key Findings</h2>
+            
+            <!-- Finding 1: BMI -->
+            <div class="insight-block">
+                <div class="insight-content">
+                    <div class="insight-number">01</div>
+                    <h3>BMI is THE Dominant Cost Driver</h3>
+                    <p>
+                        Body Mass Index emerged as the single most significant factor in determining 
+                        insurance costs. The dataset revealed that 52% of individuals fall into the 
+                        "Obese" category, and these individuals face substantially higher medical expenses.
+                    </p>
+                    <div class="key-stats">
+                        <div class="stat-item">
+                            <span class="stat-value">52.1%</span>
+                            <span class="stat-label">of dataset is obese</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value">~2x</span>
+                            <span class="stat-label">higher costs vs. normal BMI</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="insight-visual">
+                    <img src="viz_bmi_distribution_v2.png" alt="BMI Category Distribution">
+                </div>
+            </div>
+
+            <div class="visual-pair">
+                <div class="visual-item">
+                    <img src="viz_bmi_vs_expenses_v2.png" alt="BMI vs Expenses Scatter Plot">
+                    <p class="visual-caption">Clear positive correlation between BMI and medical expenses</p>
+                </div>
+                <div class="visual-item">
+                    <img src="viz_expenses_by_bmi_category_v2.png" alt="Expenses by BMI Category">
+                    <p class="visual-caption">Median expenses increase significantly with BMI category</p>
+                </div>
+            </div>
+
+            <!-- Finding 2: Age -->
+            <div class="insight-block reverse">
+                <div class="insight-visual">
+                    <img src="viz_expenses_by_age_group_v2.png" alt="Expenses by Age Group">
+                </div>
+                <div class="insight-content">
+                    <div class="insight-number">02</div>
+                    <h3>Age Matters, But Less Than Expected</h3>
+                    <p>
+                        While age does correlate with higher costs, the increase is gradual rather than 
+                        exponential. The 56-64 age group shows interesting variance, likely due to the 
+                        transition period before Medicare eligibility at 65.
+                    </p>
+                    <p>
+                        Surprisingly, when controlled for BMI, age becomes a secondary factor. This 
+                        suggests that lifestyle and health maintenance throughout life may be more 
+                        important than chronological age alone.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Finding 3: Combined Effects -->
+            <div class="insight-block">
+                <div class="insight-content">
+                    <div class="insight-number">03</div>
+                    <h3>Multiple Factors Create Complex Patterns</h3>
+                    <p>
+                        When visualizing age and BMI together, distinct expense clusters emerge. 
+                        Younger individuals with normal BMI consistently show the lowest costs, 
+                        while older individuals with higher BMI face the highest expenses.
+                    </p>
+                    <p>
+                        This visualization reveals the multiplicative effect of risk factors—having 
+                        multiple risk factors doesn't just add to costs, it amplifies them.
+                    </p>
+                </div>
+                <div class="insight-visual wide">
+                    <img src="viz_age_vs_expenses_bmi_v2.png" alt="Age vs Expenses colored by BMI">
+                </div>
+            </div>
+
+            <!-- Finding 4: Geographic -->
+            <div class="insight-block highlight">
+                <div class="insight-icon">🗺️</div>
+                <div class="insight-content">
+                    <div class="insight-number">04</div>
+                    <h3>Geographic Location Shows Minimal Impact</h3>
+                    <p>
+                        Contrary to common assumptions about regional healthcare cost differences, 
+                        all four regions (Northeast, Northwest, Southeast, Southwest) showed remarkably 
+                        similar expense distributions. This suggests that individual health factors 
+                        far outweigh geographic location in determining costs.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Finding 5: Discount Paradox -->
+            <div class="insight-block highlight">
+                <div class="insight-icon">💡</div>
+                <div class="insight-content">
+                    <div class="insight-number">05</div>
+                    <h3>The Discount Eligibility Paradox</h3>
+                    <p>
+                        An unexpected finding: individuals WITH discount eligibility actually have 
+                        higher average expenses than those without. This suggests that discount 
+                        programs may be strategically targeted at high-risk, high-cost individuals—a 
+                        smart business decision that helps manage the most expensive cases while 
+                        maintaining customer satisfaction.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Dashboard -->
+    <section class="project-section bg-dark">
+        <div class="container">
+            <h2 class="section-title-small light">Interactive Dashboard</h2>
+            <p class="dashboard-intro">
+                Explore the data yourself using this interactive Tableau dashboard. Filter by age, 
+                BMI, and region to understand how different factors affect insurance costs.
+            </p>
+            <div class="tableau-container">
+                <div class='tableauPlaceholder' id='viz1769325449336' style='position: relative'>
+                    <noscript>
+                        <a href='#'>
+                            <img alt='Dashboard 1' src='https://public.tableau.com/static/images/Me/MedicalInsuranceCostAnalysis_17692901956590/Dashboard1/1_rss.png' style='border: none' />
+                        </a>
+                    </noscript>
+                    <object class='tableauViz' style='display:none;'>
+                        <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+                        <param name='embed_code_version' value='3' />
+                        <param name='site_root' value='' />
+                        <param name='name' value='MedicalInsuranceCostAnalysis_17692901956590/Dashboard1' />
+                        <param name='tabs' value='no' />
+                        <param name='toolbar' value='yes' />
+                        <param name='static_image' value='https://public.tableau.com/static/images/Me/MedicalInsuranceCostAnalysis_17692901956590/Dashboard1/1.png' />
+                        <param name='animate_transition' value='yes' />
+                        <param name='display_static_image' value='yes' />
+                        <param name='display_spinner' value='yes' />
+                        <param name='display_overlay' value='yes' />
+                        <param name='display_count' value='yes' />
+                        <param name='language' value='en-US' />
+                    </object>
+                </div>
+                <script type='text/javascript'>
+                    var divElement = document.getElementById('viz1769325449336');
+                    var vizElement = divElement.getElementsByTagName('object')[0];
+                    if (divElement.offsetWidth > 800) {
+                        vizElement.style.width = '100%';
+                        vizElement.style.height = (divElement.offsetWidth * 0.75) + 'px';
+                    } else if (divElement.offsetWidth > 500) {
+                        vizElement.style.width = '100%';
+                        vizElement.style.height = (divElement.offsetWidth * 0.75) + 'px';
+                    } else {
+                        vizElement.style.width = '100%';
+                        vizElement.style.height = '1327px';
+                    }
+                    var scriptElement = document.createElement('script');
+                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+                    vizElement.parentNode.insertBefore(scriptElement, vizElement);
+                </script>
+            </div>
+            <div class="dashboard-links">
+                <a href="https://public.tableau.com/app/profile/aiden.jajo/viz/MedicalInsuranceCostAnalysis_17692901956590/Dashboard1" 
+                   class="btn btn-secondary" target="_blank">
+                    Open in Tableau Public →
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact & Takeaways -->
+    <section class="project-section">
+        <div class="container">
+            <h2 class="section-title-small">Impact & Takeaways</h2>
+            
+            <div class="takeaway-grid">
+                <div class="takeaway-card">
+                    <h3>For Individuals</h3>
+                    <ul>
+                        <li>Weight management has the most significant impact on insurance costs</li>
+                        <li>Age-based increases are gradual and manageable through healthy lifestyle choices</li>
+                        <li>Geographic location shouldn't be a primary concern when shopping for coverage</li>
+                        <li>Understanding your risk profile can help you make informed decisions about health and coverage</li>
+                    </ul>
+                </div>
+                
+                <div class="takeaway-card">
+                    <h3>For Insurance Companies</h3>
+                    <ul>
+                        <li>BMI-based pricing is statistically justified and should be weighted heavily</li>
+                        <li>Wellness programs targeting obesity prevention could significantly reduce overall costs</li>
+                        <li>Regional pricing variations may be overvalued relative to other factors</li>
+                        <li>Discount programs appear to be successfully targeting high-cost individuals</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="limitations">
+                <h3>Limitations & Future Work</h3>
+                <p>
+                    This analysis is based on a single dataset of 1,338 records and does not account 
+                    for factors such as pre-existing conditions, specific medical procedures, or 
+                    temporal trends in healthcare costs. Future analysis could incorporate:
+                </p>
+                <ul>
+                    <li>Longitudinal data to track how costs change over time for individuals</li>
+                    <li>Additional health metrics beyond BMI (blood pressure, cholesterol, etc.)</li>
+                    <li>Socioeconomic factors that may influence both health outcomes and costs</li>
+                    <li>Machine learning models to predict individual cost trajectories</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Details -->
+    <section class="project-section bg-light">
+        <div class="container">
+            <h2 class="section-title-small">Technical Implementation</h2>
+            
+            <div class="tech-showcase">
+                <div class="tech-item">
+                    <h3>Python Analysis</h3>
+                    <p>Used pandas for data manipulation, numpy for calculations, and matplotlib/seaborn for initial exploratory visualizations.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">pandas</span>
+                        <span class="tech-tag">numpy</span>
+                        <span class="tech-tag">matplotlib</span>
+                        <span class="tech-tag">seaborn</span>
+                    </div>
+                </div>
+                
+                <div class="tech-item">
+                    <h3>Data Transformation</h3>
+                    <p>Created categorical features, handled missing values, removed duplicates, and engineered new features for analysis.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Feature Engineering</span>
+                        <span class="tech-tag">Data Cleaning</span>
+                        <span class="tech-tag">EDA</span>
+                    </div>
+                </div>
+                
+                <div class="tech-item">
+                    <h3>Visualization</h3>
+                    <p>Tableau Public for interactive dashboards with custom color schemes and user-friendly filtering capabilities.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Tableau</span>
+                        <span class="tech-tag">Data Visualization</span>
+                        <span class="tech-tag">Dashboard Design</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-links">
+                <a href="https://github.com/yourusername/medical-insurance-analysis" class="btn btn-primary" target="_blank">
+                    View on GitHub →
+                </a>
+                <a href="medical_insurance_cleaned.csv" class="btn btn-secondary" download>
+                    Download Dataset
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Next Project Navigation -->
+    <section class="project-navigation">
+        <div class="container">
+            <div class="nav-project">
+                <span class="nav-label">← Previous Project</span>
+                <a href="#" class="nav-project-link">Network Security Analysis</a>
+            </div>
+            <div class="nav-project">
+                <span class="nav-label">Next Project →</span>
+                <a href="#" class="nav-project-link">Machine Learning Classification</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Aiden B. Jajo. Built with purpose.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
