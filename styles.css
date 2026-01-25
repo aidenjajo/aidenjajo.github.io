@@ -538,6 +538,13 @@ body {
     color: var(--color-text-light);
 }
 
+.experience-description {
+    color: var(--color-text-light);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-top: 0.5rem;
+}
+
 /* Contact Section */
 .contact {
     background-color: var(--color-white);
