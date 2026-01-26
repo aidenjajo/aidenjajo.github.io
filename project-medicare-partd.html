@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medicare Part D Analysis | Aiden B. Jajo</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="project-styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Work+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">Aiden B. Jajo</a>
+            <div class="nav-links">
+                <a href="index.html#about" class="nav-link">About</a>
+                <a href="index.html#projects" class="nav-link">Projects</a>
+                <a href="index.html#goals" class="nav-link">Goals</a>
+                <a href="index.html#resume" class="nav-link">Resume</a>
+                <a href="index.html#contact" class="nav-link nav-link-cta">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb" style="padding: 8rem 2rem 0 2rem; max-width: 1200px; margin: 0 auto;">
+        <a href="index.html">Home</a> / <a href="index.html#projects">Projects</a> / Medicare Part D Analysis
+    </div>
+
+    <!-- Project Hero -->
+    <section class="project-hero">
+        <div class="container">
+            <h1 class="project-hero-title">The Billion-Dollar Opportunity in Medicare Part D</h1>
+            <p class="project-hero-subtitle">Why are Medicare beneficiaries paying billions more than necessary when equally effective generic alternatives exist?</p>
+            <div class="project-meta">
+                <span class="meta-item"><strong>Tools:</strong> Python, Pandas, Tableau</span>
+                <span class="meta-item"><strong>Dataset:</strong> 70,000+ drug-state records (2023)</span>
+                <span class="meta-item"><strong>Focus:</strong> Cost Savings Analysis</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Challenge Section -->
+    <section class="project-section bg-light">
+        <div class="container">
+            <h2 class="section-title-small">The Challenge</h2>
+            <div class="content-block">
+                <p class="lead-text">Working as a pharmacy clerk at an independent pharmacy in El Cajon, I see the same scenario play out every week: a Medicare patient hands me their prescription, I process it through their Part D plan, and their face falls when they see the copay.</p>
+                
+                <p>"Is there a cheaper version?" they ask. Sometimes there is, a generic that works exactly the same but costs a fraction of the price. Other times, their doctor specifically wrote for the brand name, and we're stuck.</p>
+                
+                <p>But here's what bothers me: even when generics are available, I see prescriptions come through for brand name medications that could easily be swapped. An insulin prescription that costs $800 when a $250 generic exists. An antipsychotic that runs $400 when the generic is $20. These aren't isolated cases, they're patterns.</p>
+                
+                <p>Insurance pricing often feels like a black box. This project analyzes Medicare Part D prescriber data from 2023 to quantify exactly how much money is being left on the table, and where the biggest opportunities for savings exist.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Methodology Section -->
+    <section class="project-section">
+        <div class="container">
+            <h2 class="section-title-small">Data & Methodology</h2>
+            
+            <div class="methodology-grid">
+                <div class="method-card">
+                    <div class="method-icon">📊</div>
+                    <h3>Data Source</h3>
+                    <p>Medicare Part D Prescriber Data (2023) from CMS covering 359 medications with both brand and generic versions across all 50 states.</p>
+                </div>
+                
+                <div class="method-card">
+                    <div class="method-icon">🧹</div>
+                    <h3>Data Processing</h3>
+                    <p>Aggregated 3GB raw dataset into state level and drug level analyses. Calculated generic adoption rates and potential savings scenarios.</p>
+                </div>
+                
+                <div class="method-card">
+                    <div class="method-icon">⚙️</div>
+                    <h3>Feature Engineering</h3>
+                    <p>Created metrics for cost difference per claim, potential savings at 25% adoption improvement, and state ranking by generic utilization.</p>
+                </div>
+                
+                <div class="method-card">
+                    <div class="method-icon">📈</div>
+                    <h3>Analysis Tools</h3>
+                    <p>Python (pandas, matplotlib, seaborn) for data manipulation and visualization. Tableau for interactive dashboard creation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Findings Section -->
+    <section class="project-section bg-light">
+        <div class="container">
+            <h2 class="section-title-small">Key Findings</h2>
+            
+            <!-- Finding 01 -->
+            <div class="insight-block">
+                <div class="insight-content">
+                    <div class="insight-number">01</div>
+                    <h3>Three Insulin Products Represent $885 Million in Potential Savings</h3>
+                    <p>Insulin Aspart, Insulin Lispro, and Insulin Degludec showed 95 to 99% brand utilization despite available generics. These three medications alone represent the single largest savings opportunity in Medicare Part D.</p>
+                    
+                    <div class="key-stats">
+                        <div class="stat-item">
+                            <span class="stat-value">99%</span>
+                            <span class="stat-label">brand usage for Insulin Aspart</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value">$885M</span>
+                            <span class="stat-label">potential savings from insulin alone</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="insight-visual">
+                    <img src="visual_1_top_savings.png" alt="Top 10 Medications by Savings Potential">
+                    <p class="visual-caption">Top 10 medications ranked by potential annual savings with 25% generic adoption improvement</p>
+                </div>
+            </div>
+
+            <div class="visual-pair">
+                <div class="visual-item">
+                    <img src="visual_2_cost_distribution.png" alt="Cost Distribution">
+                    <p class="visual-caption">Distribution shows brand medications cost significantly more per claim than generics</p>
+                </div>
+                <div class="visual-item">
+                    <img src="visual_3_brand_generic_composition.png" alt="Brand vs Generic Composition">
+                    <p class="visual-caption">Stacked bars reveal insulin's 99% brand usage compared to better generic adoption in other drug classes</p>
+                </div>
+            </div>
+
+            <!-- Finding 02 -->
+            <div class="insight-block reverse">
+                <div class="insight-visual">
+                    <img src="visual_4_savings_matrix.png" alt="Savings Opportunity Matrix">
+                    <p class="visual-caption">Each medication plotted by cost difference and savings potential. Insulin products cluster in the high impact quadrant.</p>
+                </div>
+                <div class="insight-content">
+                    <div class="insight-number">02</div>
+                    <h3>Brand Dominance in High Cost Medications is Extreme</h3>
+                    <p>When visualizing the composition of prescriptions for top savings potential drugs, a clear pattern emerges. Insulin products show nearly complete brand dominance while other medication classes demonstrate that high generic adoption is achievable.</p>
+                    
+                    <p>This isn't about generic availability. The medications exist. This is about systemic barriers preventing their use.</p>
+                </div>
+            </div>
+
+            <!-- Finding 03 -->
+            <div class="insight-block">
+                <div class="insight-content">
+                    <div class="insight-number">03</div>
+                    <h3>Your State Determines Your Generic Access</h3>
+                    <p>Generic adoption rates range from 69.7% to over 81% depending on location. This 11 percentage point spread translates to hundreds of millions in unnecessary costs and suggests the problem isn't medical necessity but regional prescribing patterns.</p>
+                </div>
+                <div class="insight-visual">
+                    <img src="visual_5_state_rankings.png" alt="State Rankings">
+                    <p class="visual-caption">Top 15 and bottom 15 states by generic adoption rate. Geographic disparities are significant.</p>
+                </div>
+            </div>
+
+            <!-- Finding 04 -->
+            <div class="insight-block reverse">
+                <div class="insight-visual">
+                    <img src="visual_6_state_opportunity.png" alt="State Opportunity Analysis">
+                    <p class="visual-caption">States plotted by generic adoption and savings potential. Large bubbles below the national average represent the biggest opportunities.</p>
+                </div>
+                <div class="insight-content">
+                    <div class="insight-number">04</div>
+                    <h3>Five States Represent Over $2 Billion in Savings Opportunity</h3>
+                    <p>New York alone could save nearly $1 billion annually just by reaching the national average generic adoption rate. When combined with Indiana, Louisiana, California, and Kentucky, these five states represent massive concentrated opportunities for targeted intervention.</p>
+                </div>
+            </div>
+
+            <!-- Finding 05 -->
+            <div class="insight-block highlight">
+                <div class="insight-icon">💡</div>
+                <div class="insight-content">
+                    <h3>Systemic Friction, Not Clinical Necessity, Drives Brand Use</h3>
+                    <p>From behind the pharmacy counter, I see the real barriers. When a prescription comes through for a brand name medication and I see a generic alternative, I can't just switch it. I need prescriber authorization. So I call the doctor's office.</p>
+                    
+                    <p>Sometimes the medical assistant says "generic is fine" and we make the switch. Sometimes the doctor wants brand specifically. But often the response is "that's just what the doctor always writes." Or they don't return my call. The patient needs their medication now, so we fill the brand because that's what's on the prescription.</p>
+                    
+                    <p>Multiply this by millions of prescriptions nationwide and you see how systemic friction, not clinical necessity, drives brand utilization.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact & Path Forward Section -->
+    <section class="project-section">
+        <div class="container">
+            <h2 class="section-title-small">The Path Forward</h2>
+            
+            <div class="takeaway-grid">
+                <div class="takeaway-card">
+                    <h3>Target High Impact Medications</h3>
+                    <p>Focus immediate intervention on insulin and the top 10 medications by savings potential.</p>
+                    <ul>
+                        <li>Provider education campaigns highlighting generic efficacy</li>
+                        <li>Automatic substitution policies with clinical override</li>
+                        <li>Patient education at point of prescription</li>
+                    </ul>
+                </div>
+                
+                <div class="takeaway-card">
+                    <h3>Geographic Targeting</h3>
+                    <p>Pilot intensive interventions in underperforming states with large Medicare populations.</p>
+                    <ul>
+                        <li>New York: $978M potential savings</li>
+                        <li>Indiana: $258M potential savings</li>
+                        <li>California: $222M potential savings</li>
+                    </ul>
+                </div>
+                
+                <div class="takeaway-card">
+                    <h3>Prescriber Feedback Systems</h3>
+                    <p>Provide physicians with data driven insights on their prescribing patterns.</p>
+                    <ul>
+                        <li>Generic prescription rate versus peers</li>
+                        <li>Estimated patient cost savings</li>
+                        <li>Clinical outcomes demonstrating equivalency</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="insight-visual wide" style="margin-top: 4rem;">
+                <img src="visual_7_waterfall.png" alt="Savings Waterfall">
+                <p class="visual-caption">Projected impact of 25% generic adoption improvement shows billions in potential annual savings from realistic, achievable improvements</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dashboard Section -->
+    <section class="project-section bg-dark">
+        <div class="container">
+            <h2 class="section-title-small light">Interactive Dashboard</h2>
+            <p class="dashboard-intro">Explore the data yourself using this interactive Tableau dashboard. Filter by state, medication, and cost metrics to understand how different factors affect savings potential.</p>
+            
+            <div class="tableau-container">
+                <div class='tableauPlaceholder' id='viz1769411780219' style='position: relative'>
+                    <noscript>
+                        <a href='#'>
+                            <img alt='Dashboard 1 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ta&#47;Tableau_17693874392490&#47;Dashboard1&#47;1_rss.png' style='border: none' />
+                        </a>
+                    </noscript>
+                    <object class='tableauViz' style='display:none;'>
+                        <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+                        <param name='embed_code_version' value='3' />
+                        <param name='site_root' value='' />
+                        <param name='name' value='Tableau_17693874392490&#47;Dashboard1' />
+                        <param name='tabs' value='no' />
+                        <param name='toolbar' value='yes' />
+                        <param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ta&#47;Tableau_17693874392490&#47;Dashboard1&#47;1.png' />
+                        <param name='animate_transition' value='yes' />
+                        <param name='display_static_image' value='yes' />
+                        <param name='display_spinner' value='yes' />
+                        <param name='display_overlay' value='yes' />
+                        <param name='display_count' value='yes' />
+                        <param name='language' value='en-US' />
+                    </object>
+                </div>
+                <script type='text/javascript'>
+                    var divElement = document.getElementById('viz1769411780219');
+                    var vizElement = divElement.getElementsByTagName('object')[0];
+                    if ( divElement.offsetWidth > 800 ) { 
+                        vizElement.style.width='1433px';
+                        vizElement.style.height='777px';
+                    } else if ( divElement.offsetWidth > 500 ) { 
+                        vizElement.style.width='1433px';
+                        vizElement.style.height='777px';
+                    } else { 
+                        vizElement.style.width='100%';
+                        vizElement.style.height='977px';
+                    }
+                    var scriptElement = document.createElement('script');
+                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+                    vizElement.parentNode.insertBefore(scriptElement, vizElement);
+                </script>
+            </div>
+            
+            <div class="dashboard-links">
+                <a href="https://public.tableau.com/app/profile/aiden.jajo/viz/Tableau_17693874392490/Dashboard1" class="btn btn-secondary" target="_blank">Open in Tableau Public →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact & Takeaways Section -->
+    <section class="project-section bg-light">
+        <div class="container">
+            <h2 class="section-title-small">Impact & Takeaways</h2>
+            
+            <div class="takeaway-grid">
+                <div class="takeaway-card">
+                    <h3>For Policymakers</h3>
+                    <ul>
+                        <li>$885M from insulin alone justifies immediate policy intervention</li>
+                        <li>Geographic targeting offers concentrated ROI in underperforming states</li>
+                        <li>Systemic barriers are fixable with targeted prescriber and patient education</li>
+                    </ul>
+                </div>
+                
+                <div class="takeaway-card">
+                    <h3>For Healthcare Systems</h3>
+                    <ul>
+                        <li>Generic substitution protocols could save billions system wide</li>
+                        <li>Pharmacy level interventions show high potential for impact</li>
+                        <li>Provider feedback systems work for changing prescribing behavior</li>
+                    </ul>
+                </div>
+                
+                <div class="takeaway-card">
+                    <h3>For Patients</h3>
+                    <ul>
+                        <li>Ask your doctor about generic alternatives for every prescription</li>
+                        <li>Geographic location affects your likelihood of receiving generics</li>
+                        <li>Cost barriers to essential medications like insulin are solvable</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="limitations">
+                <h3>Limitations & Future Work</h3>
+                <p>This analysis uses 2023 Medicare Part D data and assumes clinical equivalency per FDA standards. Future work could incorporate:</p>
+                <ul>
+                    <li>Longitudinal analysis to track adoption trends over time</li>
+                    <li>Prescriber level data to identify high brand preference providers</li>
+                    <li>Patient outcome data to validate that generic substitution maintains quality of care</li>
+                    <li>Socioeconomic factors that may influence both health outcomes and costs</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Implementation Section -->
+    <section class="project-section">
+        <div class="container">
+            <h2 class="section-title-small">Technical Implementation</h2>
+            
+            <div class="tech-showcase">
+                <div class="tech-item">
+                    <h3>Python Analysis</h3>
+                    <p>Used pandas for data manipulation, numpy for calculations, and matplotlib/seaborn for visualizations.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">pandas</span>
+                        <span class="tech-tag">numpy</span>
+                        <span class="tech-tag">matplotlib</span>
+                        <span class="tech-tag">seaborn</span>
+                    </div>
+                </div>
+                
+                <div class="tech-item">
+                    <h3>Data Processing</h3>
+                    <p>Aggregated 3GB raw dataset, calculated savings scenarios, engineered features for state and drug level analysis.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Feature Engineering</span>
+                        <span class="tech-tag">Data Aggregation</span>
+                        <span class="tech-tag">EDA</span>
+                    </div>
+                </div>
+                
+                <div class="tech-item">
+                    <h3>Visualization</h3>
+                    <p>Tableau Public for interactive dashboards. Python for static publication quality charts.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Tableau</span>
+                        <span class="tech-tag">Data Visualization</span>
+                        <span class="tech-tag">Dashboard Design</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-links">
+                <a href="https://github.com/aidenjajo" class="btn btn-primary" target="_blank">View on GitHub →</a>
+                <a href="https://data.cms.gov/provider-summary-by-type-of-service/medicare-part-d-prescribers" class="btn btn-secondary" target="_blank">Download CMS Data</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Navigation -->
+    <section class="project-navigation">
+        <div class="container">
+            <div class="nav-project">
+                <span class="nav-label">← Previous Project</span>
+                <a href="#" class="nav-project-link">Network Security Analysis</a>
+            </div>
+            <div class="nav-project">
+                <span class="nav-label">Next Project →</span>
+                <a href="#" class="nav-project-link">Machine Learning Classification</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Aiden B. Jajo. Built with purpose.</p>
+        </div>
+    </footer>
+</body>
+</html>
