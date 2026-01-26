@@ -121,7 +121,7 @@
                 </div>
             </div>
 
-            <div class="visual-pair">
+            <div class="visual-pair" style="margin-bottom: 6rem;">
                 <div class="visual-item">
                     <img src="visual_2_cost_distribution.png" alt="Cost Distribution">
                     <p class="visual-caption">Distribution shows brand medications cost significantly more per claim than generics</p>
@@ -223,11 +223,11 @@
                         <li>Clinical outcomes demonstrating equivalency</li>
                     </ul>
                 </div>
-            </div>
-
-            <div class="insight-visual wide" style="margin-top: 4rem;">
-                <img src="visual_7_waterfall.png" alt="Savings Waterfall">
-                <p class="visual-caption">Projected impact of 25% generic adoption improvement shows billions in potential annual savings from realistic, achievable improvements</p>
+                
+                <div class="takeaway-card" style="padding: 0; border: none; background: transparent;">
+                    <img src="visual_7_waterfall.png" alt="Savings Waterfall" style="width: 100%; height: auto; border-radius: 4px;">
+                    <p class="visual-caption" style="margin-top: 1rem;">Projected impact of 25% generic adoption improvement</p>
+                </div>
             </div>
         </div>
     </section>
@@ -265,14 +265,14 @@
                     var divElement = document.getElementById('viz1769411780219');
                     var vizElement = divElement.getElementsByTagName('object')[0];
                     if ( divElement.offsetWidth > 800 ) { 
-                        vizElement.style.width='1433px';
-                        vizElement.style.height='777px';
+                        vizElement.style.width='100%';
+                        vizElement.style.height='900px';
                     } else if ( divElement.offsetWidth > 500 ) { 
-                        vizElement.style.width='1433px';
-                        vizElement.style.height='777px';
+                        vizElement.style.width='100%';
+                        vizElement.style.height='800px';
                     } else { 
                         vizElement.style.width='100%';
-                        vizElement.style.height='977px';
+                        vizElement.style.height='1000px';
                     }
                     var scriptElement = document.createElement('script');
                     scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
