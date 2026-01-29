@@ -1,4 +1,6 @@
+/* Project Page Specific Styles */
 
+/* Project Hero */
 .project-hero {
     padding: 10rem 2rem 6rem;
     background: linear-gradient(135deg, #f5f3ef 0%, #e8e4dc 100%);
@@ -54,6 +56,50 @@
     font-weight: 600;
 }
 
+/* Section Styles */
+.project-section {
+    padding: 5rem 2rem;
+}
+
+.bg-light {
+    background-color: var(--color-white);
+}
+
+.bg-dark {
+    background-color: #2a2a2a;
+    color: var(--color-bg);
+}
+
+.bg-dark .section-title-small {
+    color: var(--color-bg);
+}
+
+.bg-dark p {
+    color: #d4cfc7;
+}
+
+/* Buttons on dark background */
+.bg-dark .btn-secondary {
+    color: var(--color-bg);
+    border-color: var(--color-bg);
+}
+
+.bg-dark .btn-secondary:hover {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+}
+
+.section-title-small {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 400;
+    margin-bottom: 3rem;
+    color: var(--color-text);
+}
+
+.section-title-small.light {
+    color: var(--color-bg);
+}
 
 .content-block {
     max-width: 900px;
@@ -74,7 +120,7 @@
     margin-bottom: 1.5rem;
 }
 
-
+/* Methodology Grid */
 .methodology-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -87,7 +133,6 @@
     background-color: var(--color-bg);
     border: 1px solid var(--color-border);
     transition: var(--transition);
-    border-radius: var(--radius);
 }
 
 .method-card:hover {
@@ -114,13 +159,12 @@
     line-height: 1.6;
 }
 
-
+/* Code Showcase */
 .code-showcase {
     margin-top: 4rem;
     padding: 3rem;
     background-color: var(--color-bg);
     border: 1px solid var(--color-border);
-    border-radius: var(--radius);
 }
 
 .code-showcase h3 {
@@ -133,7 +177,7 @@
 .code-block {
     background-color: #2a2a2a;
     padding: 2rem;
-    border-radius: var(--radius);
+    border-radius: 4px;
     overflow-x: auto;
 }
 
@@ -148,6 +192,7 @@
     color: #f5f3ef;
 }
 
+/* Insight Blocks */
 .insight-block {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -170,7 +215,6 @@
     padding: 3rem;
     background-color: var(--color-white);
     border-left: 4px solid var(--color-accent);
-    border-radius: var(--radius);
 }
 
 .insight-number {
@@ -236,10 +280,10 @@
 .insight-visual img {
     width: 100%;
     height: auto;
-    border-radius: var(--radius);
+    border-radius: 4px;
 }
 
-
+/* Visual Pair */
 .visual-pair {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -247,6 +291,7 @@
     margin-bottom: 4rem;
 }
 
+/* Three Column Visual Grid */
 .visual-grid-three {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -257,7 +302,7 @@
 .visual-grid-three .visual-item img {
     width: 100%;
     height: auto;
-    border-radius: var(--radius);
+    border-radius: 4px;
 }
 
 .visual-grid-three .visual-caption {
@@ -271,7 +316,7 @@
 .visual-item img {
     width: 100%;
     height: auto;
-    border-radius: var(--radius);
+    border-radius: 4px;
 }
 
 .visual-caption {
@@ -282,7 +327,7 @@
     font-style: italic;
 }
 
-
+/* Tableau Container */
 .dashboard-intro {
     font-size: 1.1rem;
     color: #d4cfc7;
@@ -294,13 +339,15 @@
 .tableau-container {
     background-color: var(--color-white);
     padding: 2rem;
-    border-radius: var(--radius);
+    border-radius: 4px;
     margin-bottom: 2rem;
 }
 
 .dashboard-links {
     text-align: center;
+}
 
+/* Takeaway Grid */
 .takeaway-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
@@ -312,7 +359,6 @@
     padding: 2.5rem;
     background-color: var(--color-white);
     border: 1px solid var(--color-border);
-    border-radius: var(--radius);
 }
 
 .takeaway-card h3 {
@@ -344,14 +390,13 @@
     font-weight: bold;
 }
 
-
+/* Limitations */
 .limitations {
     max-width: 900px;
     padding: 3rem;
     background-color: var(--color-white);
     border-left: 4px solid var(--color-accent);
     margin-top: 4rem;
-    border-radius: var(--radius);
 }
 
 .limitations h3 {
@@ -389,7 +434,7 @@
     font-weight: bold;
 }
 
-
+/* Tech Showcase */
 .tech-showcase {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -423,10 +468,10 @@
     border: 1px solid var(--color-border);
     font-size: 0.85rem;
     color: var(--color-text);
-    border-radius: var(--radius);
+    border-radius: 2px;
 }
 
-
+/* Project Links */
 .project-links {
     display: flex;
     gap: 1.5rem;
@@ -434,7 +479,7 @@
     flex-wrap: wrap;
 }
 
-
+/* Project Navigation */
 .project-navigation {
     padding: 4rem 2rem;
     background-color: var(--color-white);
@@ -477,33 +522,33 @@
     color: var(--color-accent);
 }
 
-
+/* Responsive Design */
 @media (max-width: 968px) {
     .insight-block {
         grid-template-columns: 1fr;
         gap: 2rem;
     }
-
+    
     .insight-block.reverse {
         direction: ltr;
     }
-
+    
     .visual-pair {
         grid-template-columns: 1fr;
     }
-
+    
     .visual-grid-three {
         grid-template-columns: 1fr;
     }
-
+    
     .takeaway-grid {
         grid-template-columns: 1fr;
     }
-
+    
     .project-navigation .container {
         flex-direction: column;
     }
-
+    
     .nav-project:last-child {
         text-align: left;
     }
@@ -513,24 +558,28 @@
     .project-hero {
         padding: 8rem 1.5rem 4rem;
     }
-
+    
+    .project-section {
+        padding: 4rem 1.5rem;
+    }
+    
     .methodology-grid {
         grid-template-columns: 1fr;
     }
-
+    
     .key-stats {
         flex-direction: column;
         gap: 1.5rem;
     }
-
+    
     .tech-showcase {
         grid-template-columns: 1fr;
     }
-
+    
     .code-showcase {
         padding: 2rem 1.5rem;
     }
-
+    
     .code-block {
         padding: 1.5rem;
     }
