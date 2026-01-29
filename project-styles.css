@@ -291,6 +291,28 @@
     margin-bottom: 4rem;
 }
 
+/* Three Column Visual Grid */
+.visual-grid-three {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+.visual-grid-three .visual-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
+.visual-grid-three .visual-caption {
+    margin-top: 0.75rem;
+    font-size: 0.85rem;
+    color: var(--color-text-light);
+    text-align: center;
+    font-style: italic;
+}
+
 .visual-item img {
     width: 100%;
     height: auto;
@@ -512,6 +534,10 @@
     }
     
     .visual-pair {
+        grid-template-columns: 1fr;
+    }
+    
+    .visual-grid-three {
         grid-template-columns: 1fr;
     }
     
