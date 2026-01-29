@@ -293,10 +293,10 @@ body {
 }
 
 .about-intro {
-    font-size: 1.3rem;
-    font-family: var(--font-display);
-    color: var(--color-text);
-    line-height: 1.6;
+    font-size: 1.05rem;
+    font-family: var(--font-body);
+    color: var(--color-text-light);
+    line-height: 1.8;
 }
 
 .about-text p {
