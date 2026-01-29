@@ -58,7 +58,7 @@
 
 /* Section Styles */
 .project-section {
-    padding: 6rem 2rem;
+    padding: 5rem 2rem;
 }
 
 .bg-light {
@@ -106,10 +106,10 @@
 }
 
 .lead-text {
-    font-size: 1.25rem;
-    font-family: var(--font-display);
-    color: var(--color-text);
-    line-height: 1.7;
+    font-size: 1.05rem;
+    font-family: var(--font-body);
+    color: var(--color-text-light);
+    line-height: 1.8;
     margin-bottom: 1.5rem;
 }
 
@@ -197,7 +197,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
-    margin-bottom: 6rem;
+    margin-bottom: 4rem;
     align-items: center;
 }
 
@@ -288,7 +288,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 3rem;
-    margin-bottom: 6rem;
+    margin-bottom: 4rem;
 }
 
 .visual-item img {
