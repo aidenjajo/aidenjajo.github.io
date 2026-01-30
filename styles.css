@@ -633,7 +633,7 @@ body {
     
     .hero {
         padding: 6rem 1.5rem 3rem;
-        min-height: 100vh;
+        min-height: 85vh; /* Changed from 100vh */
     }
     
     .hero-title {
@@ -703,6 +703,7 @@ body {
     
     .hero {
         padding: 5rem 1rem 2rem;
+        min-height: 85vh; /* Changed from 100vh */
     }
     
     .hero-title {
