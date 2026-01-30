@@ -134,7 +134,7 @@ body {
     justify-content: center;
     align-items: center;
     position: relative;
-    padding: 8rem 2rem 4rem;
+    padding: 6rem 2rem 4rem;
 }
 
 .hero-content {
@@ -632,7 +632,7 @@ body {
     }
     
     .hero {
-        padding: 10rem 1.5rem 3rem;
+        padding: 8rem 1.5rem 3rem;
         min-height: 100vh;
     }
     
@@ -702,7 +702,7 @@ body {
     }
     
     .hero {
-        padding: 9rem 1rem 2rem;
+        padding: 7rem 1rem 2rem;
     }
     
     .hero-title {
