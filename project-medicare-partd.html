@@ -45,12 +45,9 @@
     <!-- Executive Summary -->
     <section class="project-section">
         <div class="container">
-            <div class="executive-summary">
-                <div class="exec-summary-icon">📋</div>
-                <div class="exec-summary-content">
-                    <h3>Executive Summary</h3>
-                    <p>This analysis of 2023 Medicare Part D prescriber data across 359 medications and all 50 states identifies <strong>$2.68 billion in potential annual savings</strong> through a modest 25% improvement in generic drug adoption. The single largest opportunity — <strong>$885 million</strong> — is concentrated in just three insulin products where brand utilization exceeds 95% despite FDA-approved generic alternatives. Geographic analysis reveals an 11-percentage-point spread in generic adoption rates across states, with five states alone accounting for over $1.9 billion in recoverable savings. The root cause is not clinical necessity, but systemic friction in the prescribing and substitution process.</p>
-                </div>
+            <h2 class="section-title-small">Executive Summary</h2>
+            <div class="content-block">
+                <p>This analysis of 2023 Medicare Part D prescriber data across 359 medications and all 50 states identifies <strong>$2.68 billion in potential annual savings</strong> through a modest 25% improvement in generic drug adoption. The single largest opportunity — <strong>$885 million</strong> — is concentrated in just three insulin products where brand utilization exceeds 95% despite FDA-approved generic alternatives. Geographic analysis reveals an 11-percentage-point spread in generic adoption rates across states, with five states alone accounting for over $1.9 billion in recoverable savings. The root cause is not clinical necessity, but systemic friction in the prescribing and substitution process.</p>
             </div>
         </div>
     </section>
@@ -357,12 +354,11 @@
         <div class="container">
             <h2 class="section-title-small">Technical Implementation</h2>
             
-            <div class="tech-showcase">
-                <div class="tech-item full-width">
-                    <h3>Core Savings Calculation</h3>
-                    <p>The heart of the analysis: aggregating raw prescriber data by drug and brand/generic status, then computing per-claim cost differentials and projecting savings scenarios.</p>
-                    <div class="code-block">
-                        <pre><code># Aggregate prescriber-level data by drug and brand/generic status
+            <div class="tech-code-section">
+                <h3>Core Savings Calculation</h3>
+                <p>The heart of the analysis: aggregating raw prescriber data by drug and brand/generic status, then computing per-claim cost differentials and projecting savings scenarios.</p>
+                <div class="code-block">
+                    <pre><code># Aggregate prescriber-level data by drug and brand/generic status
 drug_summary = df.groupby(['Gnrc_Name', 'Is_Brand']).agg(
     Total_Cost=('Tot_Drug_Cst', 'sum'),
     Total_Claims=('Tot_Clms', 'sum'),
@@ -385,9 +381,10 @@ savings_df['Cost_Difference'] = savings_df['Avg_Cost_Brand'] - savings_df['Avg_C
 savings_df['Potential_Savings_100pct'] = brand.loc[common_drugs, 'Total_Claims'].values * savings_df['Cost_Difference']
 # Conservative 25% adoption improvement scenario
 savings_df['Potential_Savings_25pct'] = savings_df['Potential_Savings_100pct'] * 0.25</code></pre>
-                    </div>
                 </div>
+            </div>
 
+            <div class="tech-details">
                 <div class="tech-item">
                     <h3>Data Pipeline</h3>
                     <p>3GB of raw CMS prescriber records were ingested with pandas, filtered to the 359 drugs with both brand and generic versions, then aggregated at both the national (per-drug) and state levels. Feature engineering produced brand utilization rates, cost differentials, and savings projections under multiple adoption scenarios.</p>
