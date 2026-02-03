@@ -36,8 +36,7 @@
             <p class="project-hero-subtitle">Why are Medicare beneficiaries paying billions more than necessary when equally effective generic alternatives exist?</p>
             <div class="project-meta">
                 <span class="meta-item"><strong>Tools:</strong> Python, Pandas, Tableau</span>
-                <!-- UPDATED: clarify what 70,000+ refers to + add total claims context -->
-                <span class="meta-item"><strong>Dataset:</strong> 70,000+ aggregated drug–state–brand records (~1.39B Part D claims, 2023)</span>
+                <span class="meta-item"><strong>Dataset:</strong> 70,000+ prescription records (1.39B total claims, 2023)</span>
                 <span class="meta-item"><strong>Focus:</strong> Cost Savings Analysis</span>
             </div>
         </div>
@@ -48,8 +47,7 @@
         <div class="container">
             <h2 class="section-title-small">Executive Summary</h2>
             <div class="content-block">
-                <!-- UPDATED: tighten + correct state spread wording (states+DC vs territories) + add claims context -->
-                <p>This analysis of 2023 Medicare Part D prescriber data covers <strong>359 medications</strong> and summarizes prescribing across <strong>50 states + Washington, D.C.</strong> (with additional territory and non-state location codes retained for reference). Across the drugs included in this study, the dataset represents approximately <strong>1.39 billion total Part D claims</strong>. The results identify <strong>$2.68 billion in potential annual savings</strong> through a modest 25% improvement in generic drug adoption. The single largest opportunity, <strong>$885 million</strong>, is concentrated in just three insulin products where brand utilization exceeds 95% despite FDA-approved alternatives. Across the 50 states + D.C., generic adoption ranges from roughly <strong>74.4% to 78.8%</strong> (~4.5 percentage points). Five states alone account for over <strong>$1.9 billion</strong> in recoverable savings. The root cause is not clinical necessity, but systemic friction in the prescribing and substitution process.</p>
+                <p>This analysis examines 2023 Medicare Part D prescribing patterns across <strong>359 medications</strong> in <strong>50 states plus Washington, D.C.</strong> The dataset represents approximately <strong>1.39 billion prescription claims</strong>. The findings reveal <strong>$2.68 billion in potential annual savings</strong> if generic adoption improved by just 25%. The largest single opportunity—<strong>$885 million</strong>—comes from three insulin products where brand-name versions are prescribed over 95% of the time despite FDA-approved alternatives. Generic adoption varies by only <strong>4.5 percentage points</strong> across states (74.4% to 78.8%), yet five states account for over <strong>$1.9 billion</strong> in potential savings. The primary barrier isn't medical necessity—it's systemic friction in how prescriptions are written and filled.</p>
             </div>
         </div>
     </section>
@@ -61,9 +59,9 @@
             <div class="content-block">
                 <p class="lead-text">Working as a pharmacy clerk at an independent pharmacy in El Cajon, I see the same scenario play out every week: a Medicare patient hands me their prescription, I process it through their Part D plan, and their face falls when they see the copay.</p>
 
-                <p>"Is there a cheaper version?" they ask. Sometimes there is, a generic that works exactly the same but costs a fraction of the price. Other times, their doctor specifically wrote for the brand name, and we're stuck.</p>
+                <p>"Is there a cheaper version?" they ask. Sometimes there is—a generic that works exactly the same but costs a fraction of the price. Other times, their doctor specifically wrote for the brand name, and we're stuck.</p>
 
-                <p>But here's what bothers me: even when generics are available, I see prescriptions come through for brand name medications that could easily be swapped. An insulin prescription that costs $800 when a lower-cost alternative exists. An antipsychotic that runs $400 when the generic is $20. These aren't isolated cases, they're patterns.</p>
+                <p>But here's what bothers me: even when generics are available, I see prescriptions come through for brand-name medications that could easily be swapped. An insulin prescription that costs $800 when a lower-cost alternative exists. An antipsychotic that runs $400 when the generic is $20. These aren't isolated cases—they're patterns.</p>
 
                 <p>Insurance pricing often feels like a black box. This project analyzes Medicare Part D prescriber data from 2023 to quantify exactly how much money is being left on the table, and where the biggest opportunities for savings exist.</p>
             </div>
@@ -79,38 +77,38 @@
                 <div class="method-card">
                     <div class="method-icon">📊</div>
                     <h3>Data Source</h3>
-                    <p>Medicare Part D Prescriber Data (2023) from CMS. The raw dataset contains over 3GB of prescriber-level records with key fields: <code>Gnrc_Name</code> (generic drug name), <code>Is_Brand</code> (brand vs. generic flag), <code>Prscrbr_State_Abrvtn</code> (state/location code), <code>Tot_Drug_Cst</code> (total cost), <code>Tot_Clms</code> (total claims), and <code>Tot_Benes</code> (total beneficiaries). After filtering to medications that have both brand and generic versions in the dataset, 359 drugs remained for analysis. Primary geographic comparisons focus on the 50 states + Washington, D.C., with additional territory and non-state codes retained separately for completeness.</p>
+                    <p>I used Medicare Part D Prescriber Data from 2023, published by the Centers for Medicare & Medicaid Services (CMS). The raw dataset is over 3GB and contains prescriber-level records with key information: <code>Gnrc_Name</code> (generic drug name), <code>Is_Brand</code> (whether it's brand or generic), <code>Prscrbr_State_Abrvtn</code> (state code), <code>Tot_Drug_Cst</code> (total cost), <code>Tot_Clms</code> (total claims), and <code>Tot_Benes</code> (total beneficiaries). After filtering to include only medications that have both brand and generic versions available, 359 drugs remained for analysis. The primary geographic comparisons focus on the 50 states plus Washington, D.C., with territory codes and military addresses retained separately.</p>
                 </div>
 
                 <div class="method-card">
                     <div class="method-icon">🧹</div>
                     <h3>Data Processing</h3>
-                    <p>The raw prescriber-level data was aggregated in two ways: (1) by drug and brand/generic status to produce national-level per-drug metrics, and (2) by state/location code and brand/generic status to produce state-level adoption and cost profiles. Missing beneficiary counts were retained as-is rather than imputed, as claims and cost data were complete. Territory and non-state codes (e.g., PR, GU, military/other codes) were included in state-level views but flagged separately in geographic comparisons.</p>
+                    <p>I organized the prescriber-level data in two ways: first by drug name and brand/generic status to create national medication profiles, and second by state and brand/generic status to build state-level cost comparisons. Where beneficiary counts were missing, I kept those gaps rather than filling them with estimates, since the claims and cost data were complete. Territory codes and military addresses were included but analyzed separately from the 50 states and D.C.</p>
                 </div>
 
                 <div class="method-card">
                     <div class="method-icon">⚙️</div>
                     <h3>Savings Calculation</h3>
-                    <p>For each drug, potential savings were calculated as:<br><br>
-                    <code>Savings (100%) = Brand Claims × (Avg Cost per Brand Claim − Avg Cost per Generic Claim)</code><br><br>
-                    This represents the maximum recoverable cost if every brand claim were switched to its generic equivalent at current generic pricing. The <strong>25% adoption improvement scenario</strong> was chosen as the primary metric because it represents a realistic near-term policy target, aggressive enough to be meaningful but achievable without requiring universal substitution mandates. State-level savings were calculated by measuring each state's gap to the national average generic adoption rate (<strong>~76.4%</strong>, rounded) and applying the cost differential to the estimated claim volume that would shift.</p>
+                    <p>For each medication, I calculated potential savings using this formula:<br><br>
+                    <code>Savings = Brand Claims × (Brand Cost per Claim − Generic Cost per Claim)</code><br><br>
+                    This shows the maximum recoverable cost if every brand prescription switched to the generic equivalent at today's generic prices. I chose the <strong>25% improvement scenario</strong> as the primary focus because it's ambitious but realistic—significant enough to matter without requiring that every single prescription be switched. For state-level savings, I measured how far each state falls below the national average generic adoption rate (<strong>76.4%</strong>) and calculated what they could save by closing that gap.</p>
                 </div>
 
                 <div class="method-card">
                     <div class="method-icon">⚠️</div>
-                    <h3>Insulin & Biosimilar Note</h3>
-                    <p>A key assumption in this analysis is FDA-established clinical equivalency between brand and generic versions. This holds straightforwardly for small-molecule drugs. For insulin, however, the situation is more nuanced: many "generic" insulin products are technically <strong>biosimilars or follow-on biologics</strong>, not identical copies. The FDA has approved these as interchangeable for most patients, but some clinicians exercise caution with biosimilar substitution due to potential immunogenicity differences. The insulin savings figures should therefore be interpreted as an upper bound that assumes full clinical interchangeability, which current FDA guidance largely supports but does not universally mandate.</p>
+                    <h3>Important Note on Insulin</h3>
+                    <p>Most generic medications are chemically identical to their brand-name versions, which makes substitution straightforward. Insulin is more complex. Many "generic" insulin products are actually <strong>biosimilars</strong>—similar but not identical to the original. The FDA has approved these as safe and effective alternatives for most patients, but some doctors prefer brand-name insulin due to concerns about individual patient responses. The insulin savings figures in this analysis ($885M) assume these products can be safely substituted, which FDA guidance supports, but this may not apply universally to every patient.</p>
                 </div>
 
                 <div class="method-card">
                     <div class="method-icon">📈</div>
                     <h3>Analysis Tools</h3>
-                    <p>Python (pandas, numpy, matplotlib, seaborn) for data ingestion, aggregation, feature engineering, and static visualizations. Tableau Public for the interactive dashboard enabling state-level and drug-level filtering. All source code and processed outputs are available on GitHub.</p>
+                    <p>I used Python (pandas, numpy, matplotlib, seaborn) for data cleaning, processing, calculations, and creating static visualizations. For interactive exploration, I built a dashboard in Tableau Public that allows filtering by state and medication. All source code and processed data are available on GitHub.</p>
                 </div>
 
                 <div class="method-visual">
                     <img src="visual_2_cost_distribution.png" alt="Cost Distribution: Brand vs Generic Per-Claim Costs">
-                    <p class="visual-caption">Brand medications cost significantly more per claim than generics, which is the gap this analysis quantifies across 359 drugs</p>
+                    <p class="visual-caption">Brand medications cost significantly more per claim than generics—this is the gap I quantified across 359 drugs</p>
                 </div>
 
                 <div class="method-visual">
@@ -131,12 +129,12 @@
                 <div class="insight-content">
                     <div class="insight-number">01</div>
                     <h3>Three Insulin Products Represent $885 Million in Potential Savings</h3>
-                    <p>Insulin Aspart, Insulin Lispro, and Insulin Degludec showed 95 to 99% brand utilization despite available alternatives. These three medications alone represent the single largest savings opportunity in Medicare Part D.</p>
+                    <p>Insulin Aspart, Insulin Lispro, and Insulin Degludec are prescribed as brand-name versions 95 to 99% of the time despite available alternatives. These three medications alone represent the single largest savings opportunity in Medicare Part D.</p>
 
                     <div class="key-stats">
                         <div class="stat-item">
                             <span class="stat-value">99%</span>
-                            <span class="stat-label">brand usage for Insulin Aspart</span>
+                            <span class="stat-label">brand prescriptions for Insulin Aspart</span>
                         </div>
                         <div class="stat-item">
                             <span class="stat-value">$885M</span>
@@ -154,23 +152,23 @@
             <div class="insight-block reverse">
                 <div class="insight-visual">
                     <img src="visual_3_brand_generic_composition.png" alt="Brand vs Generic Composition">
-                    <p class="visual-caption">Stacked bars reveal insulin's near-complete brand dominance compared to better adoption in other drug classes</p>
+                    <p class="visual-caption">Stacked bars reveal insulin's near-complete brand dominance compared to better generic adoption in other drug classes</p>
                 </div>
                 <div class="insight-content">
                     <div class="insight-number">02</div>
-                    <h3>Brand Dominance in High Cost Medications is Extreme</h3>
-                    <p>When visualizing the composition of prescriptions for top savings potential drugs, a clear pattern emerges. Insulin products show nearly complete brand dominance while other medication classes demonstrate that high generic adoption is achievable.</p>
+                    <h3>Brand Dominance in High-Cost Medications is Extreme</h3>
+                    <p>When comparing prescription patterns for top savings-potential drugs, a clear divide emerges. Insulin products show nearly complete brand dominance while other medication classes demonstrate that high generic adoption is achievable.</p>
 
                     <p>This isn't about generic availability. The medications exist. This is about systemic barriers preventing their use.</p>
 
                     <div class="key-stats">
                         <div class="stat-item">
                             <span class="stat-value">20</span>
-                            <span class="stat-label">drugs with over 90% brand usage</span>
+                            <span class="stat-label">drugs with over 90% brand prescriptions</span>
                         </div>
                         <div class="stat-item">
                             <span class="stat-value">45%</span>
-                            <span class="stat-label">of total savings driven by those drugs</span>
+                            <span class="stat-label">of total savings concentrated in those drugs</span>
                         </div>
                     </div>
                 </div>
@@ -181,14 +179,12 @@
                 <div class="insight-content">
                     <div class="insight-number">03</div>
                     <h3>Your State Determines Your Generic Access</h3>
-                    <!-- UPDATED: correct range for 50 states + DC; mention broader range only when including territories/non-state codes -->
-                    <p>Across the 50 states + Washington, D.C., generic adoption rates range from roughly <strong>74.4% to 78.8%</strong> (~4.5 percentage points). This spread translates to hundreds of millions in unnecessary costs and suggests the problem isn't medical necessity but regional prescribing patterns. When including territory and non-state location codes present in the CMS file, the observed range widens (e.g., down to 69.7% and up to 100%), reinforcing the importance of clearly separating state comparisons from non-state codes.</p>
+                    <p>Across the 50 states plus Washington, D.C., generic adoption rates range from roughly <strong>74.4% to 78.8%</strong>—only 4.5 percentage points. This narrow spread translates to hundreds of millions in unnecessary costs and suggests the problem isn't medical necessity but regional prescribing habits. When including territory and military location codes present in the CMS file, the range widens considerably (down to 69.7% and up to 100%), which highlights the importance of separating state-level comparisons from non-state codes.</p>
 
                     <div class="key-stats">
-                        <!-- UPDATED: keep 24, but clarify it’s using the rounded 76.4% benchmark -->
                         <div class="stat-item">
                             <span class="stat-value">24</span>
-                            <span class="stat-label">states below the national average benchmark (76.4%)</span>
+                            <span class="stat-label">states below the national average (76.4%)</span>
                         </div>
                         <div class="stat-item">
                             <span class="stat-value">62.6%</span>
@@ -198,7 +194,7 @@
                 </div>
                 <div class="insight-visual">
                     <img src="visual_5_state_rankings.png" alt="State Rankings">
-                    <p class="visual-caption">Top 15 and bottom 15 states by generic adoption rate. Geographic disparities are significant.</p>
+                    <p class="visual-caption">Top 15 and bottom 15 states by generic adoption rate. Geographic differences are significant.</p>
                 </div>
             </div>
 
@@ -211,7 +207,7 @@
                 <div class="insight-content">
                     <div class="insight-number">04</div>
                     <h3>Five States Represent Over $1.9 Billion in Savings Opportunity</h3>
-                    <p>New York alone could save nearly $978 million annually just by reaching the national average generic adoption rate of 76.4%. Indiana ($258M), Michigan ($256M), California ($222M), and Alabama ($214M) round out the top five, together representing over $1.9 billion in concentrated, geographically targetable savings opportunity.</p>
+                    <p>New York alone could save nearly $978 million annually just by reaching the national average generic adoption rate of 76.4%. Indiana ($258M), Michigan ($256M), California ($222M), and Alabama ($214M) round out the top five, together representing over $1.9 billion in concentrated, geographically targetable savings.</p>
                 </div>
             </div>
 
@@ -220,11 +216,11 @@
                 <div class="insight-icon">💡</div>
                 <div class="insight-content">
                     <h3>Systemic Friction, Not Clinical Necessity, Drives Brand Use</h3>
-                    <p>From behind the pharmacy counter, I see the real barriers. When a prescription comes through for a brand name medication and I see a generic alternative, I can't just switch it. I need prescriber authorization. So I call the doctor's office.</p>
+                    <p>Working behind the pharmacy counter, I see these barriers firsthand. When a prescription comes in for a brand-name drug and I know there's a generic alternative, I can't just make the switch—I need the prescriber's approval. So I call the doctor's office.</p>
 
-                    <p>Sometimes the medical assistant says "generic is fine" and we make the switch. Sometimes the doctor wants brand specifically. But often the response is "that's just what the doctor always writes." Or they don't return my call. The patient needs their medication now, so we fill the brand because that's what's on the prescription.</p>
+                    <p>Sometimes I get immediate authorization. Sometimes the doctor specifically wants the brand version for clinical reasons. But often, the response is simply "that's what the doctor always writes," or the call doesn't get returned. The patient needs their medication today, so we fill the brand because that's what's written on the prescription.</p>
 
-                    <p>Multiply this by millions of prescriptions nationwide and you see how systemic friction, not clinical necessity, drives brand utilization.</p>
+                    <p>This happens millions of times across the country. The $2.68 billion gap isn't driven by medical necessity—it's driven by workflow friction.</p>
                 </div>
             </div>
         </div>
@@ -237,11 +233,11 @@
 
             <div class="takeaway-grid">
                 <div class="takeaway-card">
-                    <h3>Target High Impact Medications</h3>
+                    <h3>Target High-Impact Medications</h3>
                     <p>Focus immediate intervention on insulin and the top 10 medications by savings potential.</p>
                     <ul>
-                        <li>Provider education campaigns highlighting generic efficacy</li>
-                        <li>Automatic substitution policies with clinical override</li>
+                        <li>Provider education campaigns highlighting generic effectiveness</li>
+                        <li>Automatic substitution policies with clinical override options</li>
                         <li>Patient education at point of prescription</li>
                     </ul>
                 </div>
@@ -260,9 +256,9 @@
 
                 <div class="takeaway-card">
                     <h3>Prescriber Feedback Systems</h3>
-                    <p>Provide physicians with data driven insights on their prescribing patterns.</p>
+                    <p>Provide physicians with data-driven insights on their prescribing patterns.</p>
                     <ul>
-                        <li>Generic prescription rate versus peers</li>
+                        <li>Generic prescription rate compared to peers</li>
                         <li>Estimated patient cost savings</li>
                         <li>Clinical outcomes demonstrating equivalency</li>
                     </ul>
@@ -341,15 +337,15 @@
                     <ul>
                         <li>$885M from insulin alone justifies immediate policy intervention</li>
                         <li>Geographic targeting offers concentrated ROI in underperforming states</li>
-                        <li>Systemic barriers are fixable with targeted prescriber and patient education</li>
+                        <li>Systemic barriers are fixable through targeted prescriber and patient education</li>
                     </ul>
                 </div>
 
                 <div class="takeaway-card">
                     <h3>For Healthcare Systems</h3>
                     <ul>
-                        <li>Generic substitution protocols could save billions system wide</li>
-                        <li>Pharmacy level interventions show high potential for impact</li>
+                        <li>Generic substitution protocols could save billions system-wide</li>
+                        <li>Pharmacy-level interventions show high potential for impact</li>
                         <li>Provider feedback systems work for changing prescribing behavior</li>
                     </ul>
                 </div>
@@ -366,10 +362,13 @@
 
             <div class="limitations">
                 <h3>Limitations & Future Work</h3>
-                <p><strong>Clinical equivalency assumption.</strong> This analysis assumes that every brand prescription could be switched to its generic equivalent without affecting patient outcomes. For small-molecule drugs, this is well-supported by FDA bioequivalence standards. For insulin and other biologics, the picture is more nuanced. Biosimilars are not chemically identical to reference products, and a small subset of patients may experience sensitivity differences. The insulin savings figures ($885M) should be understood as an upper bound under full interchangeability.</p>
-                <p><strong>What the data cannot tell us.</strong> The CMS dataset captures cost, claims volume, and geography, but not the reasons behind prescribing decisions. We cannot distinguish between brand prescriptions driven by clinical preference, prior authorization outcomes, patient requests, or simply default prescribing habits. Prescriber-level data would be needed to separate these factors. Additionally, the dataset does not include patient outcome information, so we cannot directly validate that generic substitution maintained quality of care in practice.</p>
+                <p><strong>Clinical equivalency assumption.</strong> This analysis assumes that every brand prescription could be switched to its generic equivalent without affecting patient outcomes. For small-molecule drugs, this is well-supported by FDA bioequivalence standards. For insulin and other biologics, the picture is more nuanced. Biosimilars are not chemically identical to reference products, and some patients may experience different responses. The insulin savings figures ($885M) should be understood as an upper bound that assumes full interchangeability.</p>
+                
+                <p><strong>What the data cannot tell us.</strong> The CMS dataset captures cost, claims volume, and geography, but not the reasons behind prescribing decisions. I cannot distinguish between brand prescriptions driven by clinical preference, insurance requirements, patient requests, or simply default prescribing habits. Prescriber-level data would be needed to separate these factors. Additionally, the dataset does not include patient outcome information, so I cannot directly validate that generic substitution maintains quality of care in practice.</p>
+                
                 <p><strong>Savings model assumptions.</strong> The 25% adoption improvement scenario assumes generic pricing remains stable as substitution volume increases. In practice, large-scale shifts in demand could affect generic pricing, potentially reducing per-claim savings. The model also assumes no additional friction costs (e.g., prior authorization delays, therapeutic monitoring) associated with switching. These factors would likely reduce, but not eliminate, the identified savings opportunity.</p>
-                <p><strong>Future directions.</strong> The most impactful extensions of this work would be: (1) longitudinal analysis tracking generic adoption trends year-over-year to identify whether natural market forces are already narrowing the gap; (2) prescriber-level disaggregation to identify specific high-brand-preference providers for targeted outreach; (3) integration of FDA biosimilar approval timelines to model how new generic entries may shift the opportunity landscape; and (4) incorporation of socioeconomic and demographic factors that may correlate with both prescribing patterns and patient health outcomes.</p>
+                
+                <p><strong>Future directions.</strong> The most impactful extensions of this work would be: (1) tracking generic adoption trends year-over-year to identify whether market forces are already narrowing the gap; (2) analyzing prescriber-level patterns to identify specific high-brand-preference providers for targeted outreach; (3) integrating FDA biosimilar approval timelines to model how new generic entries may shift the opportunity landscape; and (4) incorporating socioeconomic and demographic factors that may correlate with both prescribing patterns and patient health outcomes.</p>
             </div>
         </div>
     </section>
@@ -381,9 +380,9 @@
 
             <div class="tech-code-section">
                 <h3>Core Savings Calculation</h3>
-                <p>The heart of the analysis: aggregating raw prescriber data by drug and brand/generic status, then computing per-claim cost differentials and projecting savings scenarios.</p>
+                <p>The heart of the analysis: organizing raw prescriber data by drug and brand/generic status, then computing per-claim cost differences and projecting savings scenarios.</p>
                 <div class="code-block">
-                    <pre><code># Aggregate prescriber-level data by drug and brand/generic status
+                    <pre><code># Organize prescriber-level data by drug and brand/generic status
 drug_summary = df.groupby(['Gnrc_Name', 'Is_Brand']).agg(
     Total_Cost=('Tot_Drug_Cst', 'sum'),
     Total_Claims=('Tot_Clms', 'sum'),
@@ -397,7 +396,7 @@ generic = drug_summary[drug_summary['Is_Brand'] == False].set_index('Gnrc_Name')
 # Only analyze drugs that have BOTH brand and generic versions
 common_drugs = brand.index.intersection(generic.index)
 
-# Calculate average cost per claim and the savings differential
+# Calculate average cost per claim and the savings difference
 savings_df['Avg_Cost_Brand'] = brand.loc[common_drugs, 'Total_Cost'] / brand.loc[common_drugs, 'Total_Claims']
 savings_df['Avg_Cost_Generic'] = generic.loc[common_drugs, 'Total_Cost'] / generic.loc[common_drugs, 'Total_Claims']
 savings_df['Cost_Difference'] = savings_df['Avg_Cost_Brand'] - savings_df['Avg_Cost_Generic']
@@ -412,7 +411,7 @@ savings_df['Potential_Savings_25pct'] = savings_df['Potential_Savings_100pct'] *
             <div class="tech-details">
                 <div class="tech-item">
                     <h3>Data Pipeline</h3>
-                    <p>3GB of raw CMS prescriber records were ingested with pandas, filtered to the 359 drugs with both brand and generic versions, then aggregated at both the national (per-drug) and state levels. Feature engineering produced brand utilization rates, cost differentials, and savings projections under multiple adoption scenarios.</p>
+                    <p>I loaded 3GB of raw CMS prescriber records using pandas, filtered to the 359 drugs with both brand and generic versions, then organized the data at both the national (per-drug) and state levels. I created new features including brand adoption rates, cost differences, and savings projections under multiple adoption scenarios.</p>
                     <div class="tech-tags">
                         <span class="tech-tag">pandas</span>
                         <span class="tech-tag">numpy</span>
@@ -422,7 +421,7 @@ savings_df['Potential_Savings_25pct'] = savings_df['Potential_Savings_100pct'] *
 
                 <div class="tech-item">
                     <h3>Visualization</h3>
-                    <p>Static charts (top-10 rankings, cost distributions, state comparisons, opportunity scatter plot, waterfall) were generated with matplotlib and seaborn for publication quality. An interactive Tableau dashboard enables filtering by state, medication, and cost metrics.</p>
+                    <p>I created static charts (top-10 rankings, cost distributions, state comparisons, opportunity scatter plot, waterfall) using matplotlib and seaborn for publication quality. I also built an interactive Tableau dashboard that enables filtering by state, medication, and cost metrics.</p>
                     <div class="tech-tags">
                         <span class="tech-tag">matplotlib</span>
                         <span class="tech-tag">seaborn</span>
